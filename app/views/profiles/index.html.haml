@@ -18,12 +18,7 @@
         - @profiles.each do |profile|
           %tr
             %td= profile.name
-            %td
-              - if profile.status
-                %input{checked: 'checked',class: 'profile_check', id: profile.id, data: { toggle: 'toggle', off: 'inactive', on: 'active'}, onclick: "change_status(#profile.id)", type: 'checkbox'}
-              - else
-                %input{ data: { toggle: 'toggle', off: 'inactive', on: 'active'}, class: 'profile_check', id: "#{profile.id}", onclick: "change_status(#profile.id)", type: 'checkbox'}
-
+            %td=profile.status      
             %td= profile.gender
             %td= profile.website
             %td= profile.person_id
