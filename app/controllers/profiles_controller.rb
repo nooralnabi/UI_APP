@@ -1,10 +1,23 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-
+   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
   # GET /profiles
   # GET /profiles.json
   def index
     @profiles = Profile.all
+  end
+
+  def change_status
+    profile = Profile.find(params[:id])
+    profile.status  = !profile.status
+    if profile.save
+     flash[:notice] = "#{profile.name} has been #{profile.status ? 'activated' : 'deactivated'}"
+    else
+     flash[:error]= profile.errors.full_messages.to_sentence
+    end
+    respond_to do |format|
+     format.js {head :ok}
+    end
   end
 
 

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :profiles
+  resources :profiles do
+    member do
+      post 'change_status'
+    end
+  end
   resources :addresses
   resources :people
   root "people#index"
