@@ -26,9 +26,18 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'haml'
-gem 'bootstrap-sass'
+gem 'haml-rails'
+gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'omniauth-azure-oauth2'
+gem 'devise'
+gem 'figaro'
+gem 'datatables-rails', '~> 1.10.7.0'
+gem 'will_paginate'
+gem 'faker'
+gem 'bootstrap-toggle-rails'
+gem 'jquery-turbolinks'
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

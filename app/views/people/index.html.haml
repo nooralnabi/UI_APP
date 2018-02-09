@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    %h2 people list
+  .panel-body
+    %table#person.display{data: {source: people_url(format: 'json')}}
+      %thead
+        %tr
+        %th Name
+        %th Email
+        %th Phone numb
+        %th Date of brith
+
+      %tbody

@@ -1,0 +1,25 @@
+%nav.navbar.navbar-inverse.fixed-top
+  .navbar-header
+    %button.navbar-toggle.collapsed{ type: :button, data: {toggle: :collapse, target: '#bs-example-navbar-collapse-1'} }
+      %span.sr-only Toggle Navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+  .collapse.navbar-collapse#bs-example-navbar-collapse-1
+    %ul.nav.navbar-nav.navbar-right#nav-ul
+      - if current_user
+        -# - unless Rails.env.production?
+        -#   %li{class: 'active'}= link_to Rails.env.titleize, '#'
+        %li.dropdown
+          %a.dropdown-toggle{ aria: { expanded: false, haspopup: true}, data: { toggle: 'dropdown', href: '#', role: 'button'}}
+            = current_user.name
+            %span.caret
+          %ul.dropdown-menu#logout
+            %li.active#nav-li= link_to 'Sign out', destroy_user_session_path, method: :delete, id: 'nav-a'
+        .modal-mask
+          .modal
+            %strong Your online session is about to expire
+            %br
+            %button.modal-btn I'm still here!
+      - else
+        %li.active#nav-li= link_to 'Sign in', user_azure_oauth2_omniauth_authorize_path

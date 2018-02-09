@@ -1,0 +1,36 @@
+.panel.panel-default
+  .panel-heading
+    %h2 profiles
+  .panel-body
+    %table#profiles
+      %thead
+        %tr
+          %th Name
+          %th status
+          %th Gender
+          %th Website
+          %th Person
+          %th
+          %th
+          %th
+
+      %tbody
+        - @profiles.each do |profile|
+          %tr
+            %td= profile.name
+            %td
+              - if profile.status
+                %input{checked: 'checked',class: 'profile_check', id: profile.id, data: { toggle: 'toggle', off: 'inactive', on: 'active'}, onclick: "change_status(#profile.id)", type: 'checkbox'}
+              - else
+                %input{ data: { toggle: 'toggle', off: 'inactive', on: 'active'}, class: 'profile_check', id: "#{profile.id}", onclick: "change_status(#profile.id)", type: 'checkbox'}
+
+            %td= profile.gender
+            %td= profile.website
+            %td= profile.person_id
+            %td= link_to 'Show', profile
+            %td= link_to 'Edit', edit_profile_path(profile)
+            %td= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }
+
+    %br
+
+    = link_to 'New Profile', new_profile_path
