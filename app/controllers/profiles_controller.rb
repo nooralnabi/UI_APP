@@ -40,15 +40,17 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
 
-    respond_to do |format|
+    # respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render :show, status: :created, location: @profile }
+        flash[:notice] = 'Profile  was successfully created.'
+        redirect_to @profile
+
       else
-        format.html { render :new }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        flash[:error]= @profile.errors.full_messages.to_sentence
+        redirect_to new_profile_path
+    
       end
-    end
+    # end
   end
 
   # PATCH/PUT /profiles/1

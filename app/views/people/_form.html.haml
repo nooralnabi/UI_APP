@@ -1,25 +1,30 @@
 = form_for @person do |f|
-  - if @person.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
-      %ul
-        - @person.errors.full_messages.each do |message|
-          %li= message
+  .row
+  .col-sm-8
+    .card
+      .card-body
+        .form-group.row
+        - if @person.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
+            %ul
+              - @person.errors.full_messages.each do |message|
+                %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .field
-    = f.label :date_of_brith
-    = f.datetime_select :date_of_brith
-  .field
-    = f.label :active
-    = f.check_box :active
-  .actions
-    = f.submit 'Save'
+        .field
+          = f.label :name
+          = f.text_field :name, class: 'form-control', placeholder: 'Name'
+        .field
+          = f.label :email
+          = f.text_field :email, class: 'form-control', placeholder: 'Email'
+        .field
+          = f.label :phone_number
+          = f.text_field :phone_number, class: 'form-control', placeholder: 'Phone number'
+        .field
+          = f.label :date_of_brith
+          = f.date_field :date_of_brith, class:'custom-select'
+          %br/
+
+        .actions
+          = f.submit 'Save',class: 'btn btn-primary'
+      

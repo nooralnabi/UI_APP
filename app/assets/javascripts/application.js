@@ -13,12 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
-//= require rails-ujs
-//= require jquery3
 //= require turbolinks
 //= require turbolinks-compatibility
-//= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-toggle
 //= require datatables/jquery_datatables
+//= require select2
 //= require_tree .
+
+
+
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
+});

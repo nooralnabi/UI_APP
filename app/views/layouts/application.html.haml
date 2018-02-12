@@ -16,8 +16,8 @@
           #navbarSupportedContent.collapse.navbar-collapse
             %ul.navbar-nav.mr-auto
               %li.nav-item.active
-                %a.nav-link{{:href => root_path}}
-                  Home
+                %a.nav-link{{:href => people_path}}
+                  Our customers
                   %span.sr-only (current)
               %li.nav-item
                 %a.nav-link{{:href => profiles_path}} Profile
@@ -44,7 +44,7 @@
                         %button.modal-btn I'm still here!
                   - else
                     %li.active#nav-li= link_to 'Sign in', user_azure_oauth2_omniauth_authorize_path
-  
+
     .container
       #flash_hook
       .text-center

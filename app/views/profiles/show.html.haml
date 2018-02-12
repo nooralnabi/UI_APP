@@ -1,21 +1,24 @@
-%p#notice= notice
+.container
+  .card
+    .card-body
+      %p#notice= notice
 
-%p
-  %b Name:
-  = @profile.name
-%p
-  %b status:
-  = @profile.status
-%p
-  %b Gender:
-  = @profile.gender
-%p
-  %b Website:
-  = @profile.website
-%p
-  %b Person:
-  = @profile.person_id
+      %p
+        %b Name:
+        = @profile.name
+      %p
+        %b status:
+        = @profile.status ? 'active' : 'inactive'
+      %p
+        %b Gender:
+        = @profile.gender
+      %p
+        %b Website:
+        = @profile.website
+      %p
+        %b Person:
+        = @profile.person.name
 
-= link_to 'Edit', edit_profile_path(@profile)
-\|
-= link_to 'Back', profiles_path
+      = link_to 'Edit', edit_profile_path(@profile),class: 'btn btn-primary'
+
+      = link_to 'Back', profiles_path,class: 'btn btn-primary'

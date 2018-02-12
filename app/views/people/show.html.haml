@@ -12,10 +12,7 @@
 %p
   %b Date of brith:
   = @person.date_of_brith
-%p
-  %b Active:
-  = @person.active
 
-= link_to 'Edit', edit_person_path(@person)
+= link_to 'Edit', edit_person_path(@person),class: 'btn btn-primary'
 \|
-= link_to 'Back', people_path
+= link_to 'Back', people_path,class: 'btn btn-primary'
