@@ -10,8 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require jquery
-//= require bootstrap-sprockets
+//= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
+//= require turbolinks-compatibility
+//= require popper
+//= require bootstrap-sprockets
+//= require bootstrap-toggle
+//= require datatables/jquery_datatables
+//= require select2
 //= require_tree .
+
+
+
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
+});
+
+$(document).on('turbolinks:load', function() {
+  $('#person_addresses').dataTable();
+});

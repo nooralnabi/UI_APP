@@ -1,0 +1,16 @@
+.panel.panel-default
+  .panel-heading
+    %h2 customers list
+  .panel-body
+    %table#person.display{data: {source: people_url(format: 'json')}}
+      %thead
+        %tr
+        %th Name
+        %th Email
+        %th Phone numb
+        %th Date of brith
+
+      %tbody
+
+  %br/
+  = link_to 'New Person', new_person_path, {class: 'btn btn-primary'}

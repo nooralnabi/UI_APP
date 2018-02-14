@@ -1,0 +1,30 @@
+!!!
+%html{:lang => "en"}
+
+  %body.text-center.body-new
+    .cover-container.d-flex.h-100.p-3.mx-auto.flex-column.body-new
+      %header.masthead.mb-auto
+
+      .text-center
+        = image_tag("bold-gilga.png", :alt => "rss feed")
+        %h1.cover-heading What We Offer
+        %p.lead
+        We are a technology team. We are not going to tell you that we do it all like you are used to hearing from other development companies. We specialize in very specific areas. Here is our area of expertise:
+        %p.lead
+          .mb-auto
+            %h5.cover-heading Sign in to see Our Customers
+          .mb-auto
+            %a.btn.btn-lg.btn.btn-primary{:href => user_azure_oauth2_omniauth_authorize_path } Sign in
+
+        %footer.mastfoot.mt-auto
+          .inner
+            %p
+              Cover template by
+              = succeed "," do
+                %a{:href => "https://Gilgabytes.com/"} Gilgabytes
+              = succeed "." do
+                %a{:href => "nooralnabi@gilgabytes.com"} @nooralnabi
+      /
+        Bootstrap core JavaScript
+        \==================================================
+      / Placed at the end of the document so the pages load faster

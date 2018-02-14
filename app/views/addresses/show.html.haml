@@ -1,0 +1,21 @@
+.card-deck.mb-3.text-center
+  .card.mb-4.box-shadow
+    %p#notice= notice
+    %p
+      %b city:
+      = @address.city
+
+    %p
+      %b country:
+      = @address.country
+    %p
+      %b zip:
+      = @address.zip
+    %p
+      %b Person:
+      = @address.person.name
+
+    .pricing-header.text-center
+      = link_to 'Edit', edit_address_path(@address),class: 'btn btn-primary'
+
+      = link_to 'Back', addresses_path,class: 'btn btn-primary'
