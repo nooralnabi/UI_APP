@@ -22,7 +22,7 @@
           = f.text_field :zip, class: 'form-control', placeholder: 'zip'
         .form-group
           = f.label :person
-          = f.collection_select :person_id, Person.order(:name),:id,:name, class: "form-control", id: "dropdown"
+          = f.collection_select :person_id, Person.order(:name),:id,:name, class: "form-control", id: "dropdown_select2"
           %br/
 
         .actions

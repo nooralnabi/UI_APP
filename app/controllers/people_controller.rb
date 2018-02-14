@@ -10,6 +10,10 @@ class PeopleController < ApplicationController
     end
   end
 
+  def gilgabytes
+ 
+  end
+
   # GET /people/1
   # GET /people/1.json
   def show
@@ -22,6 +26,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
+    @person = Person.find(params[:id])
   end
 
   # POST /people
@@ -38,13 +43,14 @@ class PeopleController < ApplicationController
         redirect_to new_person_path
 
       end
-    
+
   end
 
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
     respond_to do |format|
+      @person = Person.find(params[:id])
       if @person.update(person_params)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
         format.json { render :show, status: :ok, location: @person }

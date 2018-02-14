@@ -24,17 +24,22 @@ class AddressesController < ApplicationController
   # POST /addresses
   # POST /addresses.json
   def create
+  
     @address = Address.new(address_params)
-
-    respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
-        format.json { render :show, status: :created, location: @address }
+        flash[:notice] = 'Address was successfully created.'
+        if params[:person_id].present?
+          redirect_to person_path(params[:person_id])
+        else
+          redirect_to @address
+        end
+
       else
-        format.html { render :new }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
+        flash[:error]= @address.errors.full_messages.to_sentence
+          redirect_to new_address_path
+
       end
-    end
+
   end
 
   # PATCH/PUT /addresses/1

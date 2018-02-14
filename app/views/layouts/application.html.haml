@@ -9,7 +9,7 @@
 
     .container
       %nav.navbar.navbar-expand-lg.bg-dark
-        %a.navbar-brand{:href => "#"} GilgaBytes
+        %a.navbar-brand{:href => gilgabytes_people_path} GilgaBytes
         %ul.navbar-nav.ml-auto
           %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
             %span.navbar-toggler-icon
@@ -45,13 +45,13 @@
                   - else
                     %li.active#nav-li= link_to 'Sign in', user_azure_oauth2_omniauth_authorize_path
 
-    .container
-      #flash_hook
-      .text-center
-        - flash.each do |key, value|
-        - alert_class = flash[:notice] ? 'success' : 'danger'
-          %div{class: "alert alert-#{alert_class}"}
-            %button.close{aria_label: 'Close', data: {dismiss: 'alert'}, type: 'button'}
-              %span{aria_hidden: 'true'} ×
-            = value
-      = yield
+      .container
+        #flash_hook
+        .text-center
+          - flash.each do |key, value|
+          - alert_class = flash[:notice] ? 'success' : 'danger'
+            %div{class: "alert alert-#{alert_class}"}
+              %button.close{aria_label: 'Close', data: {dismiss: 'alert'}, type: 'button'}
+                %span{aria_hidden: 'true'} ×
+              = value
+        = yield

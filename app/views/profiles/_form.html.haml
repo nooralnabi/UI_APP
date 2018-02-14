@@ -1,29 +1,29 @@
 = form_for @profile do |form|
   .row
-  .col-sm-6
-    .card
-      .card-body
-        .form-group.row
-          .col-sm-8
-            = form.text_field :name, class: "form-control", placeholder:  "Name"
-        .form-group.row
-          .col-sm-8
-            = form.text_field :website, class: "form-control", placeholder:  "Enter  Your website"
-        .form-group.row
-          %label.col-sm-2.col-form-label{for: "text"} Person
-          .col-sm-10
-            = form.collection_select :person_id, Person.order(:name),:id,:name, class: "form-control",id: "dropdown"
-        .form-group
-          = form.label :Gender
-          = form.select :gender,['Male', 'Female'], class: "form-control"
-        .form-group
-          = form.label :status
-          .radio
-            = form.radio_button :status,true
-            Active
-            %br/
-            = form.radio_button :status,false
-            Inactive
-
-        .actions
-          = form.submit"create profile", class:"btn btn-outline-secondary"
+    .col-sm-6
+      .card
+        .card-body
+          .form-group.row
+            .col-sm-8
+              = form.text_field :name, class: "form-control", placeholder:  " User Name"
+          .form-group.row
+            .col-sm-8
+              = form.text_field :website, class: "form-control", placeholder:  "Enter  Your website"
+          .form-group.row
+            %label.col-sm-2.col-form-label{for: "text"} Person
+            .col-sm-10
+              = form.collection_select :person_id, Person.order(:name),:id,:name, class: "form-control",id: "dropdown_select2"
+          .form-group
+            = form.label :Gender
+            = form.select :gender,['Male', 'Female'], class:"btn btn-secondary dropdown-toggle"
+          .form-group
+            = form.label :status
+            .radio
+              = form.radio_button :status,true
+              Active
+              %br/
+              = form.radio_button :status,false
+              Inactive
+        .pricing-header.text-center
+          .actions
+            = form.submit"create profile", class:"btn btn-outline-secondary"

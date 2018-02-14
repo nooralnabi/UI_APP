@@ -5,11 +5,11 @@
     %table#profiles
       %thead
         %tr
-          %th Name
+          %th customer
           %th status
           %th Gender
           %th Website
-          %th Person
+          %th User name
           %th
           %th
           %th
@@ -17,20 +17,23 @@
       %tbody
         - @profiles.each do |profile|
           %tr
-            %td= profile.name
+            %td= profile.person.name
             %td
               - if profile.status
                 %input{checked: 'checked',class: 'profile_check', id: profile.id, data: { toggle: 'toggle', off: 'inactive', on: 'active'}, onclick: "change_status(#profile.id)", type: 'checkbox'}
               - else
                 %input{ data: { toggle: 'toggle', off: 'inactive', on: 'active'}, class: 'profile_check', id: "#{profile.id}", onclick: "change_status(#profile.id)", type: 'checkbox'}
 
-            %td= profile.gender
+            %td
+              - if profile.gender == 'Male'
+                %button.btn.btn-info= profile.gender
+              - else
+                %button.btn.btn-warning= profile.gender
             %td= profile.website
-            %td= profile.person.name
+            %td= profile.name
             %td= link_to 'Show', profile,class: 'btn btn-primary'
-            %td= link_to 'Edit', edit_profile_path(profile),class: 'btn btn-primary'
+            %td= link_to 'Edit', edit_profile_path(profile),class: 'btn btn-primary btn-xs'
             %td= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"
 
     %br
-
-    = link_to 'New Profile', new_profile_path ,class: 'btn btn-primary'
+      = link_to 'New Profile', new_profile_path ,class: 'btn btn-primary'

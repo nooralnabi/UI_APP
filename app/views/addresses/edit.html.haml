@@ -4,4 +4,7 @@
 
 = link_to 'Show', @address,class: 'btn btn-primary'
 
-= link_to 'Back', addresses_path,class: 'btn btn-primary'
+- if params[:person_id]
+  = link_to 'Back', person_path(params[:person_id]), class: 'btn btn-primary'
+- else
+  = link_to 'Back', addresses_path,class: 'btn btn-primary'

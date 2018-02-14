@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
       else
         flash[:error]= @profile.errors.full_messages.to_sentence
         redirect_to new_profile_path
-    
+
       end
     # end
   end

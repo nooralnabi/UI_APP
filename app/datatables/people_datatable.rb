@@ -15,10 +15,10 @@ private
   def data
     people.map do |pl|
       [
-        pl.name,
+        link_to(pl.name, pl),
         pl.email,
         pl.phone_number,
-        pl.date_of_brith,
+        pl.date_of_brith.strftime("%B %e, %Y"),
       ]
     end
   end
@@ -29,7 +29,7 @@ private
     people = Person.order("#{sort_column} #{sort_direction}")
     people = people.page(page).per_page(per_page)
     if params[:sSearch].present?
-      people = people.where("name like :search or phone_number like :search or email like :search  ", search: "%#{params[:sSearch]}%")
+      people = people.where("name like :search or phone_number like :search or email like :search or date_of_brith like :search  ", search: "%#{params[:sSearch]}%")
     end
     people
   end

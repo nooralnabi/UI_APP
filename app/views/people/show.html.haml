@@ -1,18 +1,51 @@
 %p#notice= notice
+.card-deck.mb-3.text-center
+  .card.mb-4.box-shadow
+    %p
+      %b Name:
+      = @person.name
 
-%p
-  %b Name:
-  = @person.name
-%p
-  %b Email:
-  = @person.email
-%p
-  %b Phone number:
-  = @person.phone_number
-%p
-  %b Date of brith:
-  = @person.date_of_brith
+    %p
+      %b Email:
+      = @person.email
+    %p
+      %b Phone number:
+      = @person.phone_number
+    %p
+      %b Date of brith:
+      = @person.date_of_brith.strftime("%A %m/%d/%Y")
+    .pricing-header.text-center
 
-= link_to 'Edit', edit_person_path(@person),class: 'btn btn-primary'
-\|
-= link_to 'Back', people_path,class: 'btn btn-primary'
+      = link_to 'Back', people_path,class: 'btn btn-primary'
+#accordion{"aria-multiselectable" => "false", :role => "tablist"}
+  .card
+    #headingOne.card-header{:role => "tab"}
+      %h5.mb-0
+        %a{ class:"btn btn-primary","aria-controls" => "collapseOne", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+          Address
+          %span.badge.badge-pill.badge-success= @person.addresses.count
+      #collapseOne.collapse.show{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+        .card-block
+          .container
+            .panel-body
+              .panel.panel-default
+                %table.table.table-striped
+                  %thead
+                    %tr
+                      %th Country
+                      %th zip
+                      %th City
+                      %th
+
+                  %tbody
+                    - @person.addresses.each do |address|
+                      %tr
+                        %td= address.country
+                        %td= address.zip
+                        %td= address.city
+                        %td= link_to 'Edit', edit_address_path(address, person_id: @person),class: 'btn btn-primary'
+                          
+
+                %br
+                %br/
+                = link_to ' Add New Address', new_address_path( person_id: @person), class:'btn btn-primary'

@@ -8,3 +8,8 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#person').data('source')
+    order: [[0,'desc']],
+    aoColumnDefs: [
+      { 'bSortable': false, 'aTargets': [1,2,3] }
+    ]
+return

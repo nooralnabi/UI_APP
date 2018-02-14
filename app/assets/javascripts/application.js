@@ -15,6 +15,7 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require turbolinks-compatibility
+//= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-toggle
 //= require datatables/jquery_datatables
@@ -25,4 +26,8 @@
 
 $( "#dropdown" ).select2({
     theme: "bootstrap"
+});
+
+$(document).on('turbolinks:load', function() {
+  $('#person_addresses').dataTable();
 });
